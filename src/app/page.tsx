@@ -1,0 +1,54 @@
+import { CinematicBackdrop } from "@/components/cinematic-backdrop";
+import { EpisodeGrid } from "@/components/episode-grid";
+import { HeroFeature } from "@/components/hero-feature";
+import { SiteHeader } from "@/components/site-header";
+import { SiteLogo } from "@/components/site-logo";
+import { getHeaderLoopVideoUrl } from "@/lib/bunny-catalog";
+import {
+  getAllEpisodesInOrderResolved,
+  getFeaturedEpisodeResolved,
+} from "@/lib/resolve-bunny-episodes";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Shred n Breakfast — 2009 ski web series archive",
+  description:
+    "The lost twintip travel series returns. Lasse Nyhaugen, Kim Boberg, and Lars Haakon Hafsal — all episodes in one place.",
+};
+
+export default async function Home() {
+  const [featured, allEpisodes, loopVideoUrl] = await Promise.all([
+    getFeaturedEpisodeResolved(),
+    getAllEpisodesInOrderResolved(),
+    getHeaderLoopVideoUrl(),
+  ]);
+
+  if (!featured) {
+    return null;
+  }
+
+  const watchHref = `/watch/${featured.slug}`;
+
+  return (
+    <div className="relative min-h-screen bg-black text-zinc-100">
+      <CinematicBackdrop />
+      <div className="relative z-10">
+        <SiteHeader />
+        <HeroFeature
+          episode={featured}
+          watchHref={watchHref}
+          loopVideoUrl={loopVideoUrl}
+        />
+
+        <EpisodeGrid id="series" episodes={allEpisodes} />
+
+        <footer className="border-t border-white/10 bg-black px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
+            <SiteLogo variant="footer" className="opacity-90" />
+            <p>2009 · Republished archive · Placeholder media until masters are wired in</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
