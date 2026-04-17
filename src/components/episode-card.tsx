@@ -13,7 +13,7 @@ export function EpisodeCard({ episode }: EpisodeCardProps) {
   return (
     <Link
       href={href}
-      className="group relative block w-[72vw] shrink-0 snap-start sm:w-64 md:w-72 lg:w-80"
+      className="group relative block w-[72vw] shrink-0 sm:w-64 md:w-72 lg:w-80"
     >
       <article className="relative overflow-hidden rounded-lg ring-1 ring-white/10 transition duration-300 will-change-transform group-hover:z-10 group-hover:scale-[1.03] group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_20px_50px_-12px_rgba(0,0,0,0.85)]">
         <div className="relative aspect-video bg-zinc-900">

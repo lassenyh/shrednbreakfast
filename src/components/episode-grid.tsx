@@ -1,5 +1,5 @@
 import type { Episode } from "@/types/episode";
-import { EpisodeCard } from "@/components/episode-card";
+import { ThumbnailRail } from "@/components/thumbnail-rail";
 
 type EpisodeGridProps = {
   id?: string;
@@ -8,7 +8,7 @@ type EpisodeGridProps = {
   subtitle?: string;
 };
 
-/** Horizontal rail (streaming-style) with snap; scrollable on all breakpoints */
+/** Horizontal rail (streaming-style); scrollable on all breakpoints */
 export function EpisodeGrid({
   id,
   episodes,
@@ -22,7 +22,7 @@ export function EpisodeGrid({
       id={id}
       className="relative z-20 -mt-16 border-t-0 bg-black pb-12 pt-2 sm:-mt-20 sm:pb-16 md:-mt-24 lg:-mt-28"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto min-w-0 max-w-7xl px-4 sm:px-6 lg:px-8">
         {showHeading ? (
           <div className="mb-6 flex flex-col gap-1 sm:mb-8">
             {title ? (
@@ -35,15 +35,7 @@ export function EpisodeGrid({
             ) : null}
           </div>
         ) : null}
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-black to-transparent sm:w-12" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-black to-transparent sm:w-12" />
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 pt-1 [scrollbar-width:thin] sm:gap-4 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-track]:bg-transparent">
-            {list.map((ep) => (
-              <EpisodeCard key={ep.slug} episode={ep} />
-            ))}
-          </div>
-        </div>
+        <ThumbnailRail episodes={list} />
       </div>
     </section>
   );
