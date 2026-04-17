@@ -162,7 +162,7 @@ export function ThumbnailRail({ episodes }: { episodes: Episode[] }) {
 
       <div
         ref={scrollerRef}
-        className="flex min-h-0 min-w-0 w-full max-w-full gap-3 overflow-x-auto overscroll-x-contain pb-2 pt-1 [scrollbar-width:thin] sm:gap-4 [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20 [&::-webkit-scrollbar-track]:bg-transparent"
+        className="flex min-h-0 min-w-0 w-full max-w-full gap-3 overflow-x-auto overscroll-x-contain pb-2 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 [&::-webkit-scrollbar]:hidden"
       >
         {episodes.map((ep) => (
           <EpisodeCard key={ep.slug} episode={ep} />

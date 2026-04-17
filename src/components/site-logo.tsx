@@ -22,7 +22,9 @@ export function SiteLogo({
         : "h-5 w-auto max-h-6 sm:h-6";
 
   const align =
-    variant === "watch" ? "object-center" : "object-left";
+    variant === "watch" || variant === "footer"
+      ? "object-center"
+      : "object-left";
 
   return (
     <Image

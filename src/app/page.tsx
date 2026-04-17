@@ -43,9 +43,8 @@ export default async function Home() {
         <EpisodeGrid id="series" episodes={allEpisodes} />
 
         <footer className="border-t border-white/10 bg-black px-4 py-10 sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto flex max-w-7xl justify-center">
             <SiteLogo variant="footer" className="opacity-90" />
-            <p>2009 · Republished archive · Placeholder media until masters are wired in</p>
           </div>
         </footer>
       </div>
