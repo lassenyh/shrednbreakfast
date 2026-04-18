@@ -7,7 +7,7 @@ import type { Episode } from "@/types/episode";
  *
  * Matcher videoer etter filnavn/tittel i biblioteket:
  * - Ep. 1–13: må inneholde "Episode 1" … "Episode 13" (som i "Episode 1.mp4")
- * - Special: tittel inneholder "Special" eller "Spesial", og ikke "Episode <nummer>"
+ * - Special: Bunny-fil `SNB - Megapark_1.mp4` (matcher `SNB - Megapark_1` i tittel)
  * - Hero-loop: tittel som matcher "header01" (f.eks. header01.mp4) — egen bakgrunnsvideo
  *
  * Uten env / ved API-feil brukes videoUrl nedenfor (placeholder).
@@ -184,7 +184,7 @@ export const episodes: Episode[] = [
     featured: false,
   },
   {
-    title: "SNB Special - Megapark 2011",
+    title: "SNB - Megapark",
     slug: "special",
     episodeNumber: null,
     tag: "Special",

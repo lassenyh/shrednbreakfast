@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   },
   description:
     "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
+  icons: {
+    icon: [{ url: "/favicon/snb_favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon/snb_favicon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

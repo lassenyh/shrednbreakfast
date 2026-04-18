@@ -28,7 +28,13 @@ export function HeroLoopVideo({ src, poster }: HeroLoopVideoProps) {
     };
 
     if (isHlsUrl(src)) {
-      if (Hls.isSupported()) {
+      const nativeHls =
+        video.canPlayType("application/vnd.apple.mpegurl") ||
+        video.canPlayType("application/x-mpegURL");
+      if (nativeHls) {
+        video.src = src;
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+      } else if (Hls.isSupported()) {
         hls = new Hls({
           enableWorker: true,
           lowLatencyMode: false,
@@ -36,14 +42,9 @@ export function HeroLoopVideo({ src, poster }: HeroLoopVideoProps) {
         hls.loadSource(src);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, tryPlay);
-      } else if (
-        video.canPlayType("application/vnd.apple.mpegurl") ||
-        video.canPlayType("application/x-mpegURL")
-      ) {
-        video.src = src;
-        video.addEventListener("loadeddata", tryPlay, { once: true });
       } else {
         video.src = src;
+        video.addEventListener("loadeddata", tryPlay, { once: true });
       }
     } else {
       video.src = src;

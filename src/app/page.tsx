@@ -11,7 +11,8 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shred n Breakfast — 2009 ski web series archive",
+  /** Vises som «{title} · Shred n Breakfast» (se `layout.tsx` template). */
+  title: "Archive",
   description:
     "The lost twintip travel series returns. Lasse Nyhaugen, Kim Boberg, and Lars Haakon Hafsal — all episodes in one place.",
 };

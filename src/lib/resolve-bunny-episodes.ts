@@ -10,10 +10,9 @@ function matchesEpisodeNumberTitle(title: string, n: number): boolean {
   return parseInt(m[1], 10) === n;
 }
 
-/** Special: title contains “Special” but not “Episode 12”-style numbered episode */
-function matchesSpecialTitle(title: string): boolean {
-  if (/\bEpisode\s+\d+\b/i.test(title)) return false;
-  return /\bSpecial\b/i.test(title) || /\bSpesial\b/i.test(title);
+/** Special episode: Bunny video titled like `SNB - Megapark_1.mp4` */
+function matchesSpecialBunnyTitle(title: string): boolean {
+  return /SNB\s*-\s*Megapark_1/i.test(title.trim());
 }
 
 function attachStreamUrls(
@@ -35,7 +34,7 @@ function attachStreamUrls(
         pool.splice(idx, 1);
       }
     } else if (ep.slug === "special") {
-      const idx = pool.findIndex((v) => matchesSpecialTitle(v.title));
+      const idx = pool.findIndex((v) => matchesSpecialBunnyTitle(v.title));
       if (idx !== -1) {
         hit = pool[idx];
         pool.splice(idx, 1);

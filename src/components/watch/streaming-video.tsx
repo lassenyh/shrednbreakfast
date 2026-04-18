@@ -29,20 +29,20 @@ export function StreamingVideo({
 
     const setup = () => {
       if (isHlsUrl(src)) {
-        if (Hls.isSupported()) {
+        const nativeHls =
+          video.canPlayType("application/vnd.apple.mpegurl") ||
+          video.canPlayType("application/x-mpegURL");
+        /** Safari (incl. iOS): native HLS is more reliable than MSE/hls.js */
+        if (nativeHls) {
+          video.src = src;
+        } else if (Hls.isSupported()) {
           hls = new Hls({
             enableWorker: true,
             lowLatencyMode: false,
           });
           hls.loadSource(src);
           hls.attachMedia(video);
-        } else if (
-          video.canPlayType("application/vnd.apple.mpegurl") ||
-          video.canPlayType("application/x-mpegURL")
-        ) {
-          video.src = src;
         } else {
-          // Very old browsers — still try
           video.src = src;
         }
       } else {

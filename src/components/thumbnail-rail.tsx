@@ -118,7 +118,7 @@ export function ThumbnailRail({ episodes }: { episodes: Episode[] }) {
 
   return (
     <div
-      className="relative min-w-0 w-full"
+      className="flex min-w-0 w-full items-center gap-1 sm:gap-2"
       onTouchStart={() => setTouchPause(true)}
       onTouchEnd={() => setTouchPause(false)}
       onWheel={(e) => {
@@ -138,36 +138,38 @@ export function ThumbnailRail({ episodes }: { episodes: Episode[] }) {
         }
       }}
     >
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-black to-transparent sm:w-12" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-black to-transparent sm:w-12" />
-
       <button
         type="button"
         aria-label="Scroll thumbnails left"
         disabled={!canLeft}
         onClick={() => scrollByDir(-1)}
-        className="pointer-events-auto absolute left-1 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/55 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/75 disabled:pointer-events-none disabled:opacity-25 sm:left-2 sm:p-2.5"
+        className="hidden shrink-0 self-center rounded-full border border-white/15 bg-black/55 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/75 disabled:pointer-events-none disabled:opacity-25 sm:inline-flex sm:items-center sm:justify-center sm:p-2.5"
       >
         <ChevronIcon dir="left" />
       </button>
+
+      <div className="relative min-h-0 min-w-0 flex-1">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-black to-transparent sm:w-12" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-black to-transparent sm:w-12" />
+        <div
+          ref={scrollerRef}
+          className="flex min-h-0 min-w-0 w-full max-w-full gap-3 overflow-x-auto overscroll-x-contain pb-2 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 [&::-webkit-scrollbar]:hidden"
+        >
+          {episodes.map((ep) => (
+            <EpisodeCard key={ep.slug} episode={ep} />
+          ))}
+        </div>
+      </div>
+
       <button
         type="button"
         aria-label="Scroll thumbnails right"
         disabled={!canRight}
         onClick={() => scrollByDir(1)}
-        className="pointer-events-auto absolute right-1 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/55 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/75 disabled:pointer-events-none disabled:opacity-25 sm:right-2 sm:p-2.5"
+        className="hidden shrink-0 self-center rounded-full border border-white/15 bg-black/55 p-2 text-white shadow-lg backdrop-blur-sm transition hover:bg-black/75 disabled:pointer-events-none disabled:opacity-25 sm:inline-flex sm:items-center sm:justify-center sm:p-2.5"
       >
         <ChevronIcon dir="right" />
       </button>
-
-      <div
-        ref={scrollerRef}
-        className="flex min-h-0 min-w-0 w-full max-w-full gap-3 overflow-x-auto overscroll-x-contain pb-2 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-4 [&::-webkit-scrollbar]:hidden"
-      >
-        {episodes.map((ep) => (
-          <EpisodeCard key={ep.slug} episode={ep} />
-        ))}
-      </div>
     </div>
   );
 }
