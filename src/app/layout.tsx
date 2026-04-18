@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import { OPENGRAPH_IMAGE } from "@/lib/opengraph-defaults";
+import { getMetadataSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,13 +20,8 @@ const display = Bebas_Neue({
   variable: "--font-display",
 });
 
-const siteUrl =
-  process.env.VERCEL_URL != null
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(getMetadataSiteUrl()),
   title: {
     default: "Shred' n Breakfast",
     template: "%s · Shred' n Breakfast",
