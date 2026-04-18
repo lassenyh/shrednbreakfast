@@ -29,7 +29,7 @@ export function SiteLogo({
   return (
     <Image
       src={LOGO_PATH}
-      alt="Shred n Breakfast"
+      alt="Shred' n Breakfast"
       width={320}
       height={96}
       priority={priority}

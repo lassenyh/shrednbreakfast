@@ -42,11 +42,11 @@ export function HeroFeature({
       <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
 
       <div className="relative z-10 mx-auto flex min-h-[78vh] max-w-7xl flex-col justify-end px-4 pb-28 pt-32 sm:px-6 sm:pb-32 lg:px-8 lg:pb-36">
-        <h1 className="sr-only">Shred n Breakfast</h1>
+        <h1 className="sr-only">Shred' n Breakfast</h1>
         <p className="max-w-3xl text-base leading-relaxed text-zinc-300 sm:text-lg md:text-xl">
           In 2009, three friends traveled the world chasing snow, skiing, and
           whatever trouble came with it.{" "}
-          <span className="text-white">Shred n Breakfast</span> was the result.
+          <span className="text-white">Shred' n Breakfast</span> was the result.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link

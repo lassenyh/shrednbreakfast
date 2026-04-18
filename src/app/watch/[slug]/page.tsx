@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: episode.title,
     description:
       episode.description.trim() ||
-      `${episode.title} · Shred n Breakfast — 2009 ski web series`,
+      `${episode.title} · Shred' n Breakfast — 2009 ski web series`,
   };
 }
 
