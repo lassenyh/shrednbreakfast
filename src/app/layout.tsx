@@ -18,13 +18,24 @@ const display = Bebas_Neue({
   variable: "--font-display",
 });
 
+const siteUrl =
+  process.env.VERCEL_URL != null
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Shred' n Breakfast",
     template: "%s · Shred' n Breakfast",
   },
   description:
     "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
+  /** Utover app/favicon.ico + icon.png — eksplisitte lenker for nettlesere som ber om /favicon.ico først */
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({
