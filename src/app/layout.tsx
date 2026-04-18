@@ -36,6 +36,30 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.ico", sizes: "any" }],
     apple: [{ url: "/apple-icon.png", type: "image/png" }],
   },
+  openGraph: {
+    type: "website",
+    siteName: "Shred' n Breakfast",
+    locale: "en_US",
+    title: "Shred' n Breakfast",
+    description:
+      "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
+    images: [
+      {
+        url: "/opengraph.jpg",
+        width: 1200,
+        height: 630,
+        type: "image/jpeg",
+        alt: "Shred' n Breakfast",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shred' n Breakfast",
+    description:
+      "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
+    images: ["/opengraph.jpg"],
+  },
 };
 
 export default function RootLayout({

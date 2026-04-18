@@ -10,11 +10,21 @@ import {
 } from "@/lib/resolve-bunny-episodes";
 import type { Metadata } from "next";
 
+const homeDescription =
+  "The lost twintip travel series returns. Lasse Nyhaugen, Kim Boberg, and Lars Haakon Hafsal — all episodes in one place.";
+
 export const metadata: Metadata = {
   /** Full tab title on home — ikke bruk segment-tittel + template her */
   title: { absolute: "Shred' n Breakfast" },
-  description:
-    "The lost twintip travel series returns. Lasse Nyhaugen, Kim Boberg, and Lars Haakon Hafsal — all episodes in one place.",
+  description: homeDescription,
+  openGraph: {
+    title: "Shred' n Breakfast",
+    description: homeDescription,
+  },
+  twitter: {
+    title: "Shred' n Breakfast",
+    description: homeDescription,
+  },
 };
 
 export default async function Home() {
