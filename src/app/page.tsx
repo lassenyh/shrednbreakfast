@@ -4,6 +4,7 @@ import { HeroFeature } from "@/components/hero-feature";
 import { SiteHeader } from "@/components/site-header";
 import { SiteLogo } from "@/components/site-logo";
 import { getHeaderLoopVideoUrl } from "@/lib/bunny-catalog";
+import { OPENGRAPH_IMAGE } from "@/lib/opengraph-defaults";
 import {
   getAllEpisodesInOrderResolved,
   getFeaturedEpisodeResolved,
@@ -20,10 +21,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shred' n Breakfast",
     description: homeDescription,
+    /** Må være med her — ellers overskriver segmentets `openGraph` layout og mister `images` */
+    images: [OPENGRAPH_IMAGE],
   },
   twitter: {
+    card: "summary_large_image",
     title: "Shred' n Breakfast",
     description: homeDescription,
+    images: [OPENGRAPH_IMAGE.url],
   },
 };
 

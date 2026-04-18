@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { WatchExperience } from "@/components/watch/watch-experience";
+import { OPENGRAPH_IMAGE } from "@/lib/opengraph-defaults";
 import {
   getAdjacentEpisodesResolved,
   getAllEpisodesInOrderResolved,
@@ -13,11 +14,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const episode = await getEpisodeBySlugResolved(slug);
   if (!episode) return { title: "Not found" };
+  const description =
+    episode.description.trim() ||
+    `${episode.title} · Shred' n Breakfast — 2009 ski web series`;
   return {
     title: episode.title,
-    description:
-      episode.description.trim() ||
-      `${episode.title} · Shred' n Breakfast — 2009 ski web series`,
+    description,
+    openGraph: {
+      title: `${episode.title} · Shred' n Breakfast`,
+      description,
+      images: [OPENGRAPH_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${episode.title} · Shred' n Breakfast`,
+      description,
+      images: [OPENGRAPH_IMAGE.url],
+    },
   };
 }
 

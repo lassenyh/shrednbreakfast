@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
+import { OPENGRAPH_IMAGE } from "@/lib/opengraph-defaults";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,22 +44,14 @@ export const metadata: Metadata = {
     title: "Shred' n Breakfast",
     description:
       "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
-    images: [
-      {
-        url: "/opengraph.jpg",
-        width: 1200,
-        height: 630,
-        type: "image/jpeg",
-        alt: "Shred' n Breakfast",
-      },
-    ],
+    images: [OPENGRAPH_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Shred' n Breakfast",
     description:
       "A rediscovered ski web series from 2009 — twintips, travel, and the good kind of bad ideas.",
-    images: ["/opengraph.jpg"],
+    images: [OPENGRAPH_IMAGE.url],
   },
 };
 
